@@ -44,6 +44,7 @@ Section                                             | Leader   | Date
         - [lectures (ocw)](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/)
         - [lectures (youtube)](https://www.youtube.com/playlist?list=PLB63C06FAF154F047)
         - [lecture notes](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/lecture-notes/)
+        - [sample homework assignments](https://mitpress.mit.edu/sicp/psets/index.html)
 
 ## Code of Conduct
 
