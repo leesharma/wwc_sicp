@@ -9,18 +9,19 @@ notification preferences are set how you like them.
 
 ## Meetings
 
-Here are the details for our first meeting:
+Our meetings are **alternating Mondays, 6:30 pm @ [Mom & Pop's][map] in the
+Mosaic District**.
 
-  * Monday, April 24th, 6:30pm @ the [Dunn Loring Starbucks][map]
+We're aiming for biweekly in-person meetings to discuss the reading (see the
+[tentative schedule](#tentative-schedule) for specific dates). Most of our
+communicaton between meetings will happen in the Women Who Code DC Slack #sicp
+channel.
 
-We're currently aiming for biweekly in-person meetings to discuss the reading.
-Most of our communicaton between meetings will happen in the Women Who Code DC
-Slack #sicp channel.
+*Getting There:* Mom & Pop's is less than a mile from the
+Dunn-Loring/Merrifield Metro Station (orange line), and there are several free
+parking garages in Mosaic District.
 
-We'll figure out our future meeting schedule there/on Slack; this README will
-be updated with the final details then.
-
-[map]: https://www.google.com/maps/place/Starbucks/@38.8743216,-77.236188,15z/data=!4m8!1m2!2m1!1sstarbucks+near+Dunn+Loring-Merrifield,+Gallows+Road,+Vienna,+VA!3m4!1s0x89b64b7207403ded:0x20987642df419544!8m2!3d38.8819876!4d-77.2287519
+[map]: https://www.google.com/maps?q=2909+District+Ave%0AFairfax,+VA+22031
 
 ## Members
 
@@ -28,9 +29,12 @@ be updated with the final details then.
 
 ## Tentative Schedule
 
-Section                                             | Leader   | Date
-----------------------------------------------------|----------|--------
-*TBD*                                               |          |
+Section                                      | Leader   | Date
+---------------------------------------------|----------|---------
+Foreward-1.1.6 *(Intro to SICP & Scheme)*    | Anarchy! | April 24
+Remainder of 1.1 *(Elements of Programming)* | Mary     | May 8
+
+*(stay tuned for future updates)*
 
 ## Resources
 
