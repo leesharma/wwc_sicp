@@ -1,11 +1,7 @@
-#Notes
-
-##Chapter 1
-
-###1.1.8
-
-####Local Names
-
+# Notes
+## Chapter 1
+### 1.1.8
+#### Local Names
 [Footnote 20](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html#footnote_Temp_32) shows an important concept:
 
 > Declarative and imperative descriptions are intimately related, as indeed are mathematics and computer science. For instance, to say that the answer produced by a program is "correct" is to make a declarative statement about the program. There is a large amount of research aimed at establishing techniques for proving that programs are correct, and much of the technical difficulty of this subject has to do with negotiating the transition between imperative statements (from which programs are constructed) and declarative statements (which can be used to deduce things). In a related vein, an important current area in programming-language design is the exploration of so-called very high-level languages, in which one actually programs in terms of declarative statements. The idea is to make interpreters sophisticated enough so that, given "what is" knowledge specified by the programmer, they can generate "how to" knowledge automatically. This cannot be done in general, but there are important areas where progress has been made. We shall revisit this idea in chapter 4.
@@ -28,7 +24,7 @@ A simple example is in the Java language, where a mapping of values is needed in
 
 This looks more complex thatn just creating the map and adding the data one element at a time, and in simple cases it is. However, as requirements evolve over time (as happens in all significant software projects), this approach allows for significant changes with minimal effort, and a simplicity that helps ensure correctness.
 
-####Internal definitions and block structure
+#### Internal definitions and block structure
 This section shows the use of `define` within the _lexical scope_ of a function (from where the `sqrt` function starts, until its closing parenthesis).
 
 There are a few things worth noting here.
