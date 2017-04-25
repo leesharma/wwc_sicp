@@ -1,0 +1,15 @@
+(define (new-if predicate then-clause else-clause)
+  (cond (predicate then-clause)
+        (else else-clause)))
+
+(define (sqrt-iter guess x)
+   (new-if (good-enough? guess x)
+           guess
+           (sqrt-iter (improve guess x)
+                      x)))
+
+Because new-if is a function, all arguments will always be evaluated.
+This means that evaluating sqrt-iter will always evaluate another
+sqrt-iter (as the "else" side of the "new-if" operation). This results
+in an infinite loop, using stack (as it needs the result before it can
+continue). This uses all the stack, and returns an error.

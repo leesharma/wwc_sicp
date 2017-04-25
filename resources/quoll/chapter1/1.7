@@ -1,0 +1,10 @@
+(sqrt 0.000004)
+=> .03129261341049664
+; correct answer = 0.002
+; This is due to the delta being much larger than the numbers
+; being searched for, so a range of numbers that is much larger
+; than the provided parameter will all satisfy the test.
+
+(sqrt 9999999999998)
+; The average lacks sufficient precision for the difference to continue
+; to get smaller, meaning that the guess will never converge.
