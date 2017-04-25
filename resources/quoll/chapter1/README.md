@@ -77,7 +77,7 @@ While it works, it's messy. For this reason, an alternative version of `let` has
 
 Languages like Clojure and Haskell have `let` operations that are much more like `let*` in Scheme.
 
-Clojure uses its _vector_ syntax (instead of lists) to define let bindings, and presumes that name/values appear in pairs. This makes it more visually appealing:
+Clojure uses its _vector_ syntax (using `[`square brackets`]` instead of the `(`parentheses`)` used by lists) to define let bindings, and presumes that name/values appear in pairs. This makes it more visually appealing:
 
 ```clojure
 (let [x 2
