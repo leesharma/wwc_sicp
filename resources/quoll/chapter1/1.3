@@ -1,0 +1,4 @@
+(define (larger-sum-squares a b c)
+  (cond (or (< a b c) (< a c b)) (+ (* b b) (* c c))
+        (or (< b a c) (< b c a)) (+ (* a a) (* c c))
+        (else (+ (* a a) (* b b)))))

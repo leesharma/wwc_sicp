@@ -1,0 +1,17 @@
+(define (p) (p))
+(define (test x y)
+  (if (= x 0) 0 y))
+(test 0 (p))
+
+
+Applicative-order: 0
+Normal-order: Infinite-loop
+
+Applicative first evaluates (if (= x 0)...) which is true,
+therefore, it returns the "then" expression, which is 0,
+and ignores the "else" expression.
+
+Normal order tries to evaluate all expressions before proceeding.
+This evaluates (= x 0) to true, 0 is 0, and (p) is a function
+that calls itself without doing anything else. Evaluating (p)
+creates an infinite loop, and the system stops responding.
