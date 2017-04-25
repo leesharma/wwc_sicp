@@ -77,4 +77,12 @@ While it works, it's messy. For this reason, an alternative version of `let` has
 
 Languages like Clojure and Haskell have `let` operations that are much more like `let*` in Scheme.
 
+Clojure uses its _vector_ syntax (instead of lists) to define let bindings, and presumes that name/values appear in pairs. This makes it more visually appealing:
+
+```clojure
+(let [x 2
+      y (+ x 3)]
+  y)
+```
+
 It's some way ahead in the book, but these `let` blocks can be realized using lambdas (&lambda;). It turns out that you can do anything using &lambda;s, so this is not surprising.
