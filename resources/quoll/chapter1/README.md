@@ -144,7 +144,7 @@ Then we see that this is turned into the following:
 
 This looks very obtuse, but it is just a series of simple operations, which we can analyze.
 
-Line 0 gets the constant `0`. Line 1 gets the first long number from the stack (the `a` argument). Line 2 compares `a` and `0`. If they're not equal, then line 3 jumps ahead to line 14 to do the recursion. Otherwise (when `a == 0`) line 6 gets the second long number from the stack (`long` values take up 2 spaces of the stack). Line 7 is a call that ensures it's a number. Then line 10 jumps to 38, which will return the last loaded value: `b`. So it's just done the following:
+Line 0 gets the constant `0`. Line 1 gets the first long number from the stack (the `a` argument). Line 2 compares `a` and `0`. If they're not equal, then line 3 jumps ahead to line 14 to do the recursion. Otherwise (when `a == 0`) line 6 gets the second long number from the stack (`long` values take up 2 spaces of the stack). Line 7 is a call that ensures it's a number. Then line 10 jumps to 38, which will return the last loaded value: `b`. So it's just done the following:  
 `if (a == 0) then return b;`
 
 Otherwise, `(a != 0)` so this is where it has to increment `a`, decrement `b` and recurse.
@@ -155,7 +155,9 @@ Line 23 gets `a`, line 24 gets the number `1`, and line 25 subtracts it from `a`
 
 Line 28 gets `b`, line 29 gets `1`, and line 30 adds them. This is the `(+ b 1)`, and the result is also left on the stack.
 
-Line 33 calls the function we got earlier, using the values on the stack as the arguments. This is the equivalent of: `sum(a-1, b+1)`. The result is returned on line 38.
+Line 33 calls the function we got earlier, using the values on the stack as the arguments. This is the equivalent of:  
+`sum(a-1, b+1)`  
+The result is returned on line 38.
 
 ##### Iterative function
 TCO can be obtained with a minor tweak to use `recur` instead of the function name:
