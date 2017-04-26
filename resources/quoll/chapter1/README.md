@@ -86,3 +86,136 @@ Clojure uses its _vector_ syntax (using `[`square brackets`]` instead of the `(`
 ```
 
 It's some way ahead in the book, but these `let` blocks can be realized using lambdas (&lambda;). It turns out that you can do anything using &lambda;s, so this is not surprising.
+
+### 1.2.1
+#### Linear Recursion
+Having watched the lectures, I got confused on iteration. I thought I was looking at recursion. At this point I knew how functions are called:
+
+* Push parameters to the stack
+* Push the current stack pointer
+* Push the current instruction pointer
+* Jump to the entry point of the function to be called
+
+So when iteration was shown by calling a function recursively, I didn't understand how this could be called _iteration_. But the lectures didn't show this part from the text:
+
+> In contrasting iteration and recursion, we must be careful not to confuse the notion of a recursive _process_ with the notion of a recursive _procedure_. When we describe a procedure as recursive, we are referring to the syntactic fact that the procedure definition refers (either directly or indirectly) to the procedure itself. But when we describe a process as following a pattern that is, say, linearly recursive, we are speaking about how the process evolves, not about the syntax of how a procedure is written. It may seem disturbing that we refer to a recursive procedure such as fact-iter as generating an iterative process. However, the process really is iterative: Its state is captured completely by its three state variables, and an interpreter need keep track of only three variables in order to execute the process.
+
+This explains why it looked recursive and not iterative, but I would still have had issues with the use of the stack to call these functions. It was only later that I learnt about "Tail Call Optimization" (TCO). This was a technique pioneered by the people building Scheme. It means that a _recursive procedure_ need not use the function calling steps above, and can be executed as a _linear process_ instead. This is done by:
+
+* Replace the values in the stack with the new values for the next iteration.
+* Jump to the start of the function.
+
+Clojure can optimize its tail calls, but it needs to be referred to manually, using the `recur` operation. This means that we can look at the difference between standard recursion vs. TCO recursion. We do this using a Java utility called **javap**. This prints the bytecode that the Java Virtual Machine actually runs. The same sort of thing can be done with Scheme, or C, or any language, by looking at the assembler code that the compiler generates.
+
+##### Recursive function
+
+Looking at the Clojure recursive function:
+
+```clojure
+(defn sum [a b]
+  (if (= 0 a)
+      b
+      (sum (- a 1) (+ b 1))))
+```
+
+Then we see that this is turned into the following:
+
+```
+       0: lconst_0
+       1: lload_0
+       2: lcmp
+       3: ifne          14
+       6: lload_2
+       7: invokestatic  #19                 // Method clojure/lang/Numbers.num:(J)Ljava/lang/Number;
+      10: goto          38
+      13: pop
+      14: getstatic     #23                 // Field const__2:Lclojure/lang/Var;
+      17: invokevirtual #29                 // Method clojure/lang/Var.getRawRoot:()Ljava/lang/Object;
+      20: checkcast     #6                  // class clojure/lang/IFn$LLO
+      23: lload_0
+      24: lconst_1
+      25: invokestatic  #33                 // Method clojure/lang/Numbers.minus:(JJ)J
+      28: lload_2
+      29: lconst_1
+      30: invokestatic  #36                 // Method clojure/lang/Numbers.add:(JJ)J
+      33: invokeinterface #39,  5           // InterfaceMethod clojure/lang/IFn$LLO.invokePrim:(JJ)Ljava/lang/Object;
+      38: areturn
+```
+
+This looks very obtuse, but it is just a series of simple operations, which we can analyze.
+
+Line 0 gets the constant `0`. Line 1 gets the first long number from the stack (the `a` argument). Line 2 compares `a` and `0`. If they're not equal, then line 3 jumps ahead to line 14 to do the recursion. Otherwise (when `a == 0`) line 6 gets the second long number from the stack (`long` values take up 2 spaces of the stack). Line 7 is a call that ensures it's a number. Then line 10 jumps to 38, which will return the last loaded value: `b`. So it's just done the following:
+`if (a == 0) then return b;`
+
+Otherwise, `(a != 0)` so this is where it has to increment `a`, decrement `b` and recurse.
+
+Lines 14-20 get the function we're calling (the `sum` function that we're currently in), and make sure it's what it's supposed to be. This is in preparation to call it.
+
+Line 23 gets `a`, line 24 gets the number `1`, and line 25 subtracts it from `a`. This is the `(- a 1)`, and the result is left on the stack.
+
+Line 28 gets `b`, line 29 gets `1`, and line 30 adds them. This is the `(+ b 1)`, and the result is also left on the stack.
+
+Line 33 calls the function we got earlier, using the values on the stack as the arguments. This is the equivalent of: `sum(a-1, b+1)`. The result is returned on line 38.
+
+##### Iterative function
+TCO can be obtained with a minor tweak to use `recur` instead of the function name:
+
+```clojure
+(defn sum [a b]
+  (if (= 0 a)
+      b
+      (recur (- a 1) (+ b 1))))
+```
+
+The resulting process is:
+
+```
+       0: lconst_0
+       1: lload_0
+       2: lcmp
+       3: ifne          14
+       6: lload_2
+       7: invokestatic  #19                 // Method clojure/lang/Numbers.num:(J)Ljava/lang/Number;
+      10: goto          29
+      13: pop
+      14: lload_0
+      15: lconst_1
+      16: invokestatic  #23                 // Method clojure/lang/Numbers.minus:(JJ)J
+      19: lload_2
+      20: lconst_1
+      21: invokestatic  #26                 // Method clojure/lang/Numbers.add:(JJ)J
+      24: lstore_2
+      25: lstore_0
+      26: goto          0
+      29: areturn
+```
+
+This starts similarly. Lines 0-10 check if `(a == 0)`, jumping to the end if they are equal.
+
+Lines 14-16 do `(- a 1)`. Lines 19-21 do `(+ b 1)`.
+
+This time, instead of leaving them at the top of the stack, line 24 stores the result of the addition into `b`, and line 25 stores the result of the subtraction into `a`. Line 26 then jumps back to the beginning.
+
+##### Comparing with pseudocode
+Here is a pseudocode rewriting of the recursive version (skipping some of the irrelevant steps):
+
+```
+  if (a == 0) return b;
+  get function "sum";
+  stack1 = (a - 1);
+  stack2 = (b + 1);
+  call sum(stack1, stack2);
+```
+
+Here is pseudocode for the iterative version:
+
+```
+  if (a == 0) return b;
+  stack1 = (a - 1);
+  stack2 = (b + 1);
+  b = stack2;
+  a = stack1;
+  goto start;
+```
+
+You may notice that the iterative version looks a lot like a `while` loop. This is why languages like C, C++, Java, Javascript, Python, and Ruby all have looping control structures that look like this. They are very easy for the computer to convert them into simple operations that the machine knows how to execute.
