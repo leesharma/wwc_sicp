@@ -108,6 +108,7 @@ This explains why it looked recursive and not iterative, but I would still have 
 Clojure can optimize its tail calls, but it needs to be referred to manually, using the `recur` operation. This means that we can look at the difference between standard recursion vs. TCO recursion. We do this using a Java utility called **javap**. This prints the bytecode that the Java Virtual Machine actually runs. The same sort of thing can be done with Scheme, or C, or any language, by looking at the assembler code that the compiler generates.
 
 ##### Recursive function
+To see how recursion works, it's instructive to trace through a simple function that relies on recursion. The example here is an addition operation. It performs addition by recursively subtracting 1 from the first argument, and adding 1 to the second argument, until the first argument reaches zero. When this happens, the second argument will be the sum of the 2 original arguments.
 
 Looking at the Clojure recursive function:
 
