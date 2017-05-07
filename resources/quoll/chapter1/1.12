@@ -1,0 +1,11 @@
+(define (line l)
+  (if (= 1 (length l))
+    '(1)
+    (cons (+ (car l) (cadr l)) (line (cdr l)))))
+
+;; where: (= (cadr l) (car (cdr l)))
+
+(define (pascal n)
+  (if (< n 1)     
+    '(1)
+    (cons 1 (line (pascal (- n 1))))))
