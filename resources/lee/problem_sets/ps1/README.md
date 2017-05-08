@@ -1,15 +1,15 @@
-# Problem Set 1.1
+# Problem Set 1
 
-Here are my answers to [Problem Set 1.1]. The full problem set can be found
-there.
+Here are my answers to [Problem Set 1] (book section 1.1). The full problem
+set can be found there.
 
 I skipped three questions that either depended on the MIT environment or were
 outdated; the rest of the questions and answers are below.
 
 [problem set 1.1]: https://mitpress.mit.edu/sicp/psets/ps1/readme.html
 
-* [Exercises]
-* [Reflections]
+* [Exercises](#exercises)
+* [Reflections](#reflections)
 
 ## Exercises
 
