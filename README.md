@@ -29,10 +29,11 @@ parking garages in Mosaic District.
 
 ## Tentative Schedule
 
-Section                                      | Leader   | Date
----------------------------------------------|----------|---------
-Foreward-1.1.6 *(Intro to SICP & Scheme)*    | Anarchy! | April 24
-Remainder of 1.1 *(Elements of Programming)* | Mary     | May 8
+Section                                           | Leader            | Date
+--------------------------------------------------|-------------------|---------
+Foreward-1.1.6 *(Intro to SICP & Scheme)*         | Anarchy!          | April 24
+Remainder of *1.1. Elements of Programming*       | Mary              | May 8
+*1.2. Procedures and the Processes They Generate* | Lee (or Anarchy!) | May 22
 
 *(stay tuned for future updates)*
 
