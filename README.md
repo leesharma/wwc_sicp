@@ -31,8 +31,8 @@ Remainder of *1.1. Elements of Programming*                         | Mary      
 *1.2. Procedures and the Processes They Generate*                   | Lee (or Anarchy!) | May 22
 *1.3. Formulating Abstractions with Higer-Order Procedures*         | Paula             | June 5
 *2.1. Introduction to Data Abstraction*                             | Zey               | June 19
-*2.2. Hierarchical Data and the Closure Property* (up until 2.2.4)  | Lee               | July 3
-*2.2.4 Example: A Picture Language*                                 | ?                 | July 17
+*2.2. Hierarchical Data and the Closure Property* (up until 2.2.4)  | ?                 | July 17
+*2.2.4 Example: A Picture Language*                                 | ?                 | July 31
 
 *(stay tuned for future updates)*
 
