@@ -1,0 +1,6 @@
+(define (xor a b) (or (and a (not b)) (and b (not a))))
+
+(define (make-rat n d)
+ (let ((g (gcd (abs n) (abs d)))
+       (sign (if (xor (< n 0) (< d 0)) -1 1)))
+  (cons (* sign (/ (abs n) g)) (/ (abs d) g))))

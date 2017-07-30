@@ -1,0 +1,49 @@
+(define (make-point x y)
+ (cons x y))
+
+(define (x-point p) (car p))
+
+(define (y-point p) (cdr p))
+
+(define (make-rect1 a b)
+ (cons a b))
+
+(define (top-left1 r) (car r))
+
+(define (bottom-right1 r) (cdr r))
+
+(define (width1 r)
+ (- (x-point (bottom-right1 r)) (x-point (top-left1 r))))
+
+(define (height1 r)
+ (- (y-point (bottom-right1 r)) (y-point (top-left1 r))))
+
+(define (perimeter1 r)
+  (+ (* 2 (width1 r))
+     (* 2 (height1 r))))
+
+(define (make-rect2 a b)
+ (let* ((width (- (x-point b) (x-point a)))
+        (height (- (y-point b) (y-point a)))
+        (dims (cons width height)))
+   (cons a dims)))
+
+(define (top-left2 r) (car r))
+
+(define (bottom-right2 r)
+ (let ((p1 (top-left2 r))
+       (dims (cdr r)))
+  (make-point (+ (x-point p1) (car dims))
+              (+ (y-point p1) (cdr dims)))))
+
+(define (width2 r)
+ (car (cdr r)))
+
+(define (height2 r)
+ (cdr (cdr r)))
+
+(define (perimeter2 r)
+  (+ (* 2 (width2 r))
+     (* 2 (height2 r))))
+
+
