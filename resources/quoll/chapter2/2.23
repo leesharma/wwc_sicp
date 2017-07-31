@@ -1,0 +1,7 @@
+(define (for-each p l)
+ (if (null? l)
+  #t
+  (begin
+   (p (car l))
+   (for-each p (cdr l)))))
+

@@ -1,0 +1,2 @@
+The first item comes from the front of the input list, and forms the end of the output.
+Reversing argiments to cons puts the list in front of a value, which is not list structure.
