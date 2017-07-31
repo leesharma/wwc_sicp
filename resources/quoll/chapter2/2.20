@@ -1,0 +1,12 @@
+(define (drop-while p l)
+ (if (or (null? l) (not (p (car l))))
+  l
+  (drop-while p (cdr l))))
+
+(define (same-parity . l)
+ (if (null? l)
+  '()
+  (let* ((f (car l))
+         (diff-parity (if (even? f) odd? even?)))
+   (cons f (apply same-parity (drop-while diff-parity (cdr l)))))))
+

@@ -37,3 +37,17 @@ The definition of cons/car/cdr occurs here. Given the ability to use `let` I don
 
 Amusingly, Exercise 2.4 appears to be what I explained above.
 
+### 2.1.4
+2.8 is sneaky, because it has to be (- lower upper), and (- upper lower)
+
+## 2.2
+Interesting note: "Closure" has 2 distinct meanings, but only one is used in this book.
+The other meaning (procedures with free variables) is not in this book, though it is
+the more common usage in contemporary programming.
+
+### 2.2.1 Representing Sequences
+Note that `'(1 2 3 4)` is equivalent to `(list 1 2 3 4)`. This is where the syntax for `'()` comes from for the empty list.
+
+
+
+

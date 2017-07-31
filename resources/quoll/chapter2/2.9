@@ -1,0 +1,54 @@
+
+(define (add-interval x y)
+ (make-interval (+ (lower-bound x) (lower-bound y))
+                (+ (upper-bound x) (upper-bound y))))
+
+given:
+(define x (make-interval x1 x2))
+(define y (make-interval y1 y2))
+
+Then adding intervals x and y gives:
+
+(make-interval (+ x1 y1) (+ x2 y2))
+
+width of x = (/ (- x2 x1) 2)
+width of y = (/ (- y2 y1) 2)
+
+width of addition:
+  (/ (- (+ x2 y2) (+ x1 y1)) 2)
+  (/ (+ (- x2 x1) (- y2 y1)) 2)
+  (+ (/ (- x2 x1) 2) (/ (- y2 y1) 2))
+  (+ width-of-x width-of-y)
+
+------
+
+Since mul-interval is based on the min/max of multiplications
+
+if (lower-bound x) = 0 then the lower bound of the result is 0
+
+Upper bound of the result will be the largest of all combinations
+multiplying lower and upper. The result will be the multiplication
+of (upper-bound x) with whichever bound for y is larger. This is
+independent of the difference between the bounds for y, as it only
+includes one of them.
+
+(define x (make-interval 0 1))  ;; width=1
+(define y (make-interval 5 10)) ;; width=5
+(mul-interval x y)              ;; width=10
+
+(define x (make-interval 0 3))  ;; width=3
+(define y (make-interval 5 10)) ;; width=5
+(mul-interval x y)              ;; width=10
+
+(define x (make-interval 0 1))  ;; width=1
+(define y (make-interval 9 10)) ;; width=1
+(mul-interval x y)              ;; width=10
+
+(define x (make-interval 0 1))  ;; width=1
+(define y (make-interval 0 10)) ;; width=10
+(mul-interval x y)              ;; width=10
+
+(define x (make-interval 9 10)) ;; width=1
+(define y (make-interval 0 10)) ;; width=10
+(mul-interval x y)              ;; width=100
+
