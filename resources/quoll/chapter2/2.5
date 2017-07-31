@@ -1,0 +1,34 @@
+; The 2^a portion ensures `a` zero bits at the end.
+; 3^b ensures that the lowest bit in that part of the number will be 1, 
+; This means that the number can be reconstructed by finding the number of zeros at the end
+; to get `a`, and taking base 3 log of the remainder for `b`.
+
+(define (required-bits n)
+ (inexact->exact (ceiling (/ (log (1+ n)) (log 2)))))
+
+(define (bits-tail-length full-len bits)
+ (define (bits-tail-len len)
+   (if (and (< len full-len)
+            (not (bit-string-ref bits len)))
+     (bits-tail-len (1+ len))
+     len))
+ (bits-tail-len 0))
+
+(define (tail-length n)
+ (let* ((bits-length (required-bits n))
+        (bits (unsigned-integer->bit-string bits-length n)))
+   (bits-tail-len bits-length bits)))
+
+(define (cons a b)
+ (* (expt 2 a) (expt 3 b)))
+
+(define (car z)
+  (tail-length z))
+
+(define (cdr z)
+ (let* ((bits-length (required-bits z))
+        (bits (unsigned-integer->bit-string bits-length z))
+        (b-bits (bit-substring bits (bits-tail-length bits-length bits) bits-length))
+        (bb (bit-string->unsigned-integer b-bits)))
+  (inexact->exact (/ (log bb) (log 3)))))
+

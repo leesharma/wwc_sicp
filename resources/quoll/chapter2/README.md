@@ -24,4 +24,16 @@ I love how EVERYTHING can be defined with lambdas.
 
 In exercise 2.2, notice that points are just pairs? This means that rational numbers can be useed as points, and vice-versa. Languages like Clojure give you typing with records, which avoid the potential confusion that this can cause. Type safe languages like Haskell make it hard to not do this.
 
+### 2.1.3
+The definition of cons/car/cdr occurs here. Given the ability to use `let` I don't feel comfortable with `define` in a function, but I appreciate that it's common Scheme idiom. On the other hand, it's not needed here, since a lambda can be returned directly:
+
+```scheme
+(define (cons x y)
+ (lambda (m)
+  (cond ((= m 0) x)
+        ((= m 1) y)
+        (else (error "Argument not 0 or 1: CONS" m)))))
+```
+
+Amusingly, Exercise 2.4 appears to be what I explained above.
 
