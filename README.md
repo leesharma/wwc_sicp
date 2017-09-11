@@ -9,32 +9,30 @@ notification preferences are set how you like them.
 
 ## Meetings
 
-Our meetings are **alternating Mondays, 6:30 pm @ [Mom & Pop's][map] in the
-Mosaic District**.
+Our meetings are **alternating Mondays, 6:30 pm @ [Whole Foods Market][map] in
+Falls Church**.
 
 We're aiming for biweekly in-person meetings to discuss the reading (see the
 [tentative schedule](#tentative-schedule) for specific dates). Most of our
 communicaton between meetings will happen in the Women Who Code DC Slack #sicp
 channel.
 
-*Getting There:* Mom & Pop's is less than a mile from the
-Dunn-Loring/Merrifield Metro Station (orange line), and there are several free
-parking garages in Mosaic District.
+*Getting There:* There's a big parking lot right in front of store, and it's
+right on the 28A and 3T metro bus routes.
 
-[map]: https://www.google.com/maps?q=2909+District+Ave%0AFairfax,+VA+22031
-
-## Members
-
-*TBD*
+[map]: https://www.google.com/maps/place/Whole+Foods+Market/@38.9029323,-77.2073972,17z
 
 ## Tentative Schedule
 
-Section                                           | Leader            | Date
---------------------------------------------------|-------------------|---------
-Foreward-1.1.6 *(Intro to SICP & Scheme)*                   | Anarchy!          | April 24
-Remainder of *1.1. Elements of Programming*                 | Mary              | May 8
-*1.2. Procedures and the Processes They Generate*           | Lee (or Anarchy!) | May 22
-*1.3. Formulating Abstractions with Higer-Order Procedures* | Paula             | June 5
+Section                                                             | Leader            | Date
+--------------------------------------------------------------------|-------------------|---------
+Foreward-1.1.6 *(Intro to SICP & Scheme)*                           | Anarchy!          | April 24
+Remainder of *1.1. Elements of Programming*                         | Mary              | May 8
+*1.2. Procedures and the Processes They Generate*                   | Lee (or Anarchy!) | May 22
+*1.3. Formulating Abstractions with Higer-Order Procedures*         | Paula             | June 5
+*2.1. Introduction to Data Abstraction*                             | Zey               | June 19
+*2.2. Hierarchical Data and the Closure Property* (up until 2.2.4)  | ?                 | July 17
+*2.2.4 Example: A Picture Language*                                 | ?                 | July 31
 
 *(stay tuned for future updates)*
 
